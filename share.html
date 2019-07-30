@@ -22,6 +22,11 @@
                 <div class="card-info">
                     <div class="inner">
                         <div class="qrcode" id="qrcode"></div>
+                        <a href="javascript:;" class="voice">
+                            <i></i>
+                            <em>周周语音邀请</em>
+                            <audio src="https://ia801704.us.archive.org/21/items/idabkar/001.mp3" preload="auto"></audio>
+                        </a>
                         <div class="card-text">
                             <header>
                                 <img src="./assets/images/tmp/avatar.png" class="card-avatar" alt="">
@@ -52,7 +57,7 @@
             typeNumber: -1
         });	
     });
-    window.onload = function() {
+   window.onload = function() {
         html2canvas(document.getElementById('card'), {
           allowTaint: true,
           useCORS: true,
