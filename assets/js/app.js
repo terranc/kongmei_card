@@ -18,4 +18,23 @@ $(function() {
       success: function() {}
     });
   });
+
+  // 播放语音
+  var audio = $('.voice.enable audio');
+  if (audio.length > 0) {
+      audio[0].addEventListener('ended', function () {
+          $(this).closest('.voice').removeClass('play');
+          this.currentTime = 0;
+          this.pause();
+      }, false);
+      $('.voice').on('click', function(e) {
+          if ($(this).toggleClass('play').hasClass('play')) {
+              audio[0].play();
+          } else {
+              audio[0].currentTime = 0;
+              audio[0].pause();
+          }
+          e.preventDefault();
+      });
+  }
 });

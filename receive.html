@@ -21,7 +21,7 @@
                 <img src="./assets/images/card/1.jpg" class="bg" alt="">
                 <div class="card-info">
                     <div class="inner">
-                        <a href="javascript:;" class="voice">
+                        <a href="javascript:;" class="voice enable">
                             <i></i>
                             <em>周周语音邀请</em>
                             <audio src="https://ia801704.us.archive.org/21/items/idabkar/001.mp3" preload="auto"></audio>
@@ -45,24 +45,6 @@
         // window.SHARE_TITLE = '定义本页分享里的标题文字';    // 可选，默认为页面标题
         window.SHARE_DESC = '定义本页分享里的描述文字';     // 可选
         // window.SHARE_LINK = 'http://baidu.com';     // 可选，默认为当前页面地址
-
-        var audio = $('.voice audio');
-        if (audio.length > 0) {
-            audio[0].addEventListener('ended', function () {
-                $(this).closest('.voice').removeClass('play');
-                this.currentTime = 0;
-                this.pause();
-            }, false);
-            $('.voice').on('click', function(e) {
-                if ($(this).toggleClass('play').hasClass('play')) {
-                    audio[0].play();
-                } else {
-                    audio[0].currentTime = 0;
-                    audio[0].pause();
-                }
-                e.preventDefault();
-            });
-        }
     });
     </script>
 </body>
