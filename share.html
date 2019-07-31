@@ -18,18 +18,13 @@
     <div id="app">
         <div class="container">
             <div class="card" id="card">
-                <img src="./assets/images/card/1.jpg" class="bg" alt="">
+                <img src="./assets/images/card/1.jpg" crossorigin="anonymous" class="bg" alt="">
                 <div class="card-info">
                     <div class="inner">
                         <div class="qrcode" id="qrcode"></div>
-                        <a href="javascript:;" class="voice">
-                            <i></i>
-                            <em>周周语音邀请</em>
-                            <audio src="https://ia801704.us.archive.org/21/items/idabkar/001.mp3" preload="auto"></audio>
-                        </a>
                         <div class="card-text">
                             <header>
-                                <img src="https://kmlm.oss-cn-hangzhou.aliyuncs.com/top_video/ANNA.jpg?nsukey=%2B47QJvFMK86ghcqCVc95X6%2BuO3Ewly1IcbxJTZePCfvFDB8RffSPNqgxAuks5MDf%2By2tKg%2B6D3EV006pjCDsslaTCXpebYgwjeKSiiLXyfyLPswvU7XhspIBmY30dEPP3ckumBECSljqWWtUydwF1NlNwPyx0NyyHjzwauARTCx1wMmSIEz0KMm65CMpoxd1PTCuMilpt9JxnchgGI1j6Q%3D%3D" class="card-avatar" alt="">
+                                <img crossorigin="anonymous" src="https://kmlm.oss-cn-hangzhou.aliyuncs.com/top_video/ANNA.jpg?nsukey=%2B47QJvFMK86ghcqCVc95X6%2BuO3Ewly1IcbxJTZePCfvFDB8RffSPNqgxAuks5MDf%2By2tKg%2B6D3EV006pjCDsslaTCXpebYgwjeKSiiLXyfyLPswvU7XhspIBmY30dEPP3ckumBECSljqWWtUydwF1NlNwPyx0NyyHjzwauARTCx1wMmSIEz0KMm65CMpoxd1PTCuMilpt9JxnchgGI1j6Q%3D%3D&a=1" class="card-avatar" alt="">
                                 <h3>小丸子</h3>
                             </header>
                             <p>经常想起我们一起读书、运动的日子。送你一杯黑源素，祝你健康开心每一天！</p>
@@ -57,13 +52,13 @@
             typeNumber: -1
         });	
     });
-   window.onload = function() {
+    window.onload = function() {
         html2canvas(document.getElementById('card'), {
-          allowTaint: false,
+          allowTaint: false,//允许跨域图片
           useCORS: true,
           scale: window.devicePixelRatio,
           backgroundColor: null,
-        }).then(function(canvas) {
+        }).then(function(canvas) { 
             var elemImg = '<img src=' + canvas.toDataURL('image/png') + ' width="100%" id="canvas-img" />';
             document.getElementById('card').innerHTML = elemImg;
         });
