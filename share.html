@@ -50,16 +50,16 @@
             width: 135,
             height: 135,
             typeNumber: -1
-        });	
+        });
     });
     window.onload = function() {
         html2canvas(document.getElementById('card'), {
           allowTaint: false,//允许跨域图片
           useCORS: true,
           scale: window.devicePixelRatio,
-          backgroundColor: null,
-        }).then(function(canvas) { 
-            var elemImg = '<img src=' + canvas.toDataURL('image/png') + ' width="100%" id="canvas-img" />';
+          backgroundColor: null
+        }).then(function(canvas) {
+            var elemImg = '<img src=' + canvas.toDataURL('image/png') + ' width="100%" id="canvas-img" crossorigin="anonymous" />';
             document.getElementById('card').innerHTML = elemImg;
         });
     };
