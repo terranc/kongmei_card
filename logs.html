@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=no">
+  <title>空美卡</title>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/normalize.css">
+  <link rel="stylesheet" href="./assets/css/app.css">
+  <link rel="stylesheet" href="./assets/css/libs/dialog.css">
+  <script src="//res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+  <script src="//cdn.jsdelivr.net/jquery/2.2.3/jquery.slim.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8.1.3/dist/polyfill.min.js"></script>
+  <script src="./assets/js/libs/dialog.min.js"></script>
+</head>
+<body class="logs-body">
+    <noscript>
+      <strong>We're sorry but the page doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app">
+        <div class="container" v-cloak>
+            <div class="logs-statis">
+                <p><em>20</em>位小伙伴已领卡</p>
+                <p><em>8</em>位小伙伴完成下单，共获得<em>640</em>元代金券</p>
+            </div>
+            <ul class="user-lists">
+                <li v-for="item in data">
+                    <div class="avatar">
+                        <img :src="item.avatar" alt="">
+                    </div>
+                    <div class="info">
+                        <h3>{{ item.nickname }}</h3>
+                        <p>{{ item.created_at }} 领取 {{ item.source_user }}</p>
+                    </div>
+                    <div class="action">
+                        <label class="already" v-if="item.buy_status">已下单</label>
+                        <label v-else>未下单</label>
+                    </div>
+                </li>
+            </ul>
+            <div class="load-more">
+                <a href="#" v-if="loading">正在加载中</a>
+                <a href="#" @click="fetchData" v-if="!loading && hasMore">点击查看更多...</a>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/app.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                data: [],
+                loading: false,
+                hasMore: true,
+                page: 1,
+            },
+            created: function() {
+                var self = this;
+                this.fetchData();
+            },
+            methods: {
+                fetchData: function() {
+                    var self = this;
+                    if (!self.hasMore) return false;
+                    self.loading = true;
+                    axios.get('./mocks/logs.json', { params: { page: self.page }}).then(function(res) {
+                        self.loading = false;
+                        self.data = self.data.concat(res.data.data.list);
+                        self.hasMore = res.data.data.has_more;
+                        self.page++;
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

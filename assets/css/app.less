@@ -67,6 +67,9 @@
 
 // 375px (iPhone 6)
 // 此为基准值, 与视觉设计稿 `宽度/2` 保持一致
+[v-cloak] {
+  display: none;
+}
 html {
   font-size: 20px;
 }
@@ -405,8 +408,22 @@ button:focus {
 .index-body {
   h1 {
     font-size: 0.75rem;
-    text-align: center;
-    margin: 0.64rem 0 0.75rem;
+    text-align: left;
+    margin: 0.64rem .95rem 0.75rem;
+
+    a {
+      float: right;
+      font-size: 0.6rem;
+      font-weight: 400;
+      margin-top: 0.1rem;
+      color: #797979;
+
+      em {
+        color: #ED5B10;
+        font-style: normal;
+        margin: 0 0.25rem;
+      }
+    }
   }
   .card-list {
     padding: 0 0.95rem;
@@ -609,6 +626,83 @@ button:focus {
   .container {
     .voice {
       top: -2.22rem;
+    }
+  }
+}
+.logs-body {
+  .container {
+    .logs-statis {
+      text-align: center;
+      padding: 0.8rem;
+      font-size: 0.6rem;
+      color: #797979;
+      p {
+        margin: 0.3rem 0;
+      }
+      em {
+        margin: 0 0.25rem;
+        color: #ED5B10;
+        font-style: normal;
+      }
+    }
+    .load-more {
+      a {
+        display: block;
+        padding: 1.2rem 0;
+        color: #797979;
+        text-align: center;
+        font-size: 0.7rem;
+      }
+    }
+    .user-lists {
+      margin: 0;
+      padding: 0 0.8rem;
+      list-style: none;
+      li {
+        display: flex;
+        &:not(:last-child) {
+          margin-bottom: 0.8rem;
+        }
+        .avatar {
+          img {
+            width:2.15rem;
+            height:2.15rem;
+            border-radius:50%;
+            display: block;
+          }
+          margin-right: 0.48rem;
+        }
+        .info {
+          flex: 1;
+          padding-top: 0.2rem;
+          h3 {
+            font-size: 0.7rem;
+            margin: 0 0 0.35rem;
+          }
+          p {
+            color: #797979;
+            font-size: 0.55rem;
+            margin: 0;
+            line-height: 1.5;
+            padding-right: 1rem;
+          }
+        }
+        .action {
+          align-self: center;
+          label {
+            border: 1px solid #ABABAB;
+            color: #ABABAB;
+            text-align: center;
+            padding: 0.3rem 0.38rem;
+            border-radius: 3px;
+            font-size: 0.55rem;
+            &.already {
+              color: #ED5B10;
+              border-color: #ED5B10;
+            }
+          }
+        }
+      }
     }
   }
 }
