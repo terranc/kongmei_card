@@ -40,7 +40,7 @@
             </ul>
             <div class="load-more">
                 <a href="#" v-if="loading">正在加载中</a>
-                <a href="#" @click="fetchData" v-if="!loading && hasMore">点击查看更多...</a>
+                <a href="#" @click.prevent="fetchData" v-if="!loading && hasMore">点击查看更多...</a>
             </div>
         </div>
     </div>
